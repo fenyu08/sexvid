@@ -1,9 +1,7 @@
 .DS_Store
 node_modules
-dist
-dist.zip
-distDI
-distDI.zip
+/dist
+
 
 # local env files
 .env.local
@@ -13,6 +11,7 @@ distDI.zip
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # Editor directories and files
 .idea

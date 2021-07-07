@@ -1,12 +1,24 @@
-# vue-scan-demo
+# cs
 
-### vue基于H5+扫码demo演示
+## Project setup
+```
+npm install
+```
 
-### 如何使用
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-##### 1.Clone [vue-scan-demo](https://github.com/wkl007/vue-scan-demo.git),然后终端进入项目根目录。
+### Compiles and minifies for production
+```
+npm run build
+```
 
-##### 2.打开Hbuilder，打开目录，将目录指向 `/dist` ，然后添加Hbuilder中`manifest.json`,真机usb连接运行。
+### Lints and fixes files
+```
+npm run lint
+```
 
-##### 3.真机依次点击1、2、3、4按钮查看演示效果。
-
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
