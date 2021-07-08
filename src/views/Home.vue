@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <h2>Most Viewed Videos This Month</h2>
-    <videoList />
+    <videoList :videoData="homeData1" />
     <h2>TODAY'S FEATURED XXX MOVIES</h2>
-    <videoList />
+    <videoList :videoData="homeData1" />
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   name: 'Home',
   components: {
     videoList
+  },
+  data(){
+    return{
+      homeData1:9
+    }
   }
 }
 </script>

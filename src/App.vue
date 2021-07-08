@@ -19,7 +19,7 @@
    <div class="nav">
      <img src="./assets/images/logo.svg" alt="" srcset="" style="width:220px">
      <ul>
-       <li><span>Home</span></li>
+       <li @click="$router.push('/')"><span>Home</span></li>
        <li><span>Videos</span></li>
        <li><span>Photos</span></li>
        <li><span>Categories</span></li>       
@@ -124,6 +124,7 @@
   .search-box{
     background: #291e3b;
     display: flex;
+    margin-bottom: 20px;
     input{
       border: none;
       outline:none;

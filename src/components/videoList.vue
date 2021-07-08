@@ -1,7 +1,7 @@
 <template>
     <div class="video-list">
         <ul>
-            <li v-for="index in 10" :key="index">
+            <li v-for="index in videoData" :key="index" @click="toPlay">
                 <img src="../assets/images/10.jpg" alt="" srcset="" style="width:100%">
                 <div class="video-info">
                     <p>A curvy woman in lingerie gets a dick inside her wet pussy lips</p>
@@ -21,7 +21,20 @@
 </template>
 <script>
 export default {
-    
+    name:'videoList',
+    data(){
+        return{
+            // videoData:10
+        }
+    },
+    props: {
+    videoData: Number
+  },
+  methods:{
+      toPlay(){
+          this.$router.push('/videoPlay')
+      }
+  }
 }
 </script>
 <style lang="less">
