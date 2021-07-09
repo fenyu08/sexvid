@@ -12,7 +12,7 @@
       <li class="language">
         <span>English</span>
       </li>
-      <li><span>Log in</span></li>
+      <li @click="showForm=true"><span>Log in</span></li>
       <li><span>Sign up</span> </li>
     </ul>
    </div>
@@ -38,11 +38,41 @@
     </div>
     <router-view/>
   </div>
-    
+ <div class="login-box" v-if="showForm">
+   <div class="form">
+     <div class="close-btn" @click="showForm=false">
+       <i class="el-icon-close"></i>
+     </div>
+      <h2>LOGIN TO YOUR ACCOUNT</h2>
+      <div>
+          <input type="text" placeholder="Username">
+      </div>
+       <div>
+          <input type="password" placeholder="Password">
+      </div>
+      <div class="form-btn">
+        <span>Log in</span>
+      </div>
+      <div class="form-ft">
+        <span>Forgot password?</span>
+        <p>Not a member yet? </p>
+        <span> Sign up! </span>
+      </div>
+   </div>
+ </div>
  
   </div>
 </template>
-
+<script>
+export default {
+  name:"app",
+  data() {
+    return {
+      showForm:false
+    }
+  },
+}
+</script>
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -151,7 +181,101 @@
     }
   }
 }
-
+.login-box{
+  position: fixed;
+    z-index: 1050;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(32, 20, 51, 0.9);
+    .form{
+      width: 520px;
+      background: #3a2e4d;
+      position: absolute;
+      padding: 54px 45px;
+      box-sizing: border-box;
+      top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+      h2{
+       color: #fff;
+       font-size: 24px;
+       font-weight: 400;
+       text-transform: uppercase;
+       padding-bottom: 28px;
+    text-align: left;
+      }
+      .close-btn{
+        width: 42px;
+        height: 42px;
+        background: #2e2241;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        line-height: 46px;
+        i{
+          color: #fff;
+        font-size: 20px;
+        }
+        &:hover{
+          background: #ff3477;
+        }
+      }
+      input{
+        font-weight: 300;
+    font-size: 16px;
+    line-height: 18px;
+    width: 100%;
+    padding: 17px 20px;
+    transition: background .3s;
+    color: #9e99a6;
+    border: none;
+    background: #4e435f;
+    background: rgba(255, 255, 255, .1);
+    outline:none;
+    margin-top: 2px;
+    box-sizing: border-box;
+    &:focus{
+      color: #000;
+    background: #fff;
+    }
+      }
+      .form-btn{
+        font-size: 15px;
+        color: #fff;
+        float: right;
+        padding: 17px 26px 16px;
+        cursor: pointer;
+        background: #7229cd;
+        transition: background .6s;
+        text-transform: uppercase;
+        margin-top: 20px;
+        &:hover{
+          background: #9d58f3;
+        }
+      }
+      .form-ft{
+        display: flex;
+        clear: both;
+        margin-top: 94px;
+        font-size: 16px;
+        color: #9440ff;
+        p{
+          color: #aca7b3;
+          margin-left: auto;
+          margin-right: 2px;
+        }
+        span{
+          cursor: pointer;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+}
 #nav a {
   font-weight: bold;
   color: #2c3e50;

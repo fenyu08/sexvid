@@ -41,7 +41,7 @@ export default {
                         //类型
                         type: "video/mp4",
                         //url地址
-                        src: 'https://ip250112359.ahcdn.com/key=vBcROCORLFbPPDBLqyv8jA,s=,end=1625732329/state=YOamkCKp/buffer=594050:583476,360.1/speed=118810/reftag=039416939/ssd1/153/0/241712310/a/19000/19604/19604_480p.mp4' 
+                        src: 'https://www.sexvid.xxx/get_file/8/8e2fc646acbc001460da507562ac3867dd666a39ec/19000/19604/19604_480p.mp4/?br=844&rnd=1625834750384' 
                     }],
                     //你的封面地址
                     poster: '', 
