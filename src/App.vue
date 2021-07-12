@@ -12,8 +12,8 @@
       <li class="language">
         <span>English</span>
       </li>
-      <li @click="showForm=true"><span>Log in</span></li>
-      <li><span>Sign up</span> </li>
+      <li @click="showForm=true,isLogin=true"><span>Log in</span></li>
+      <li @click="showForm=true,isLogin=false"><span>Sign up</span> </li>
     </ul>
    </div>
    <div class="nav">
@@ -39,7 +39,7 @@
     <router-view/>
   </div>
  <div class="login-box" v-if="showForm">
-   <div class="form">
+   <div class="form" v-if="isLogin">
      <div class="close-btn" @click="showForm=false">
        <i class="el-icon-close"></i>
      </div>
@@ -56,7 +56,36 @@
       <div class="form-ft">
         <span>Forgot password?</span>
         <p>Not a member yet? </p>
-        <span> Sign up! </span>
+        <span @click="isLogin=false"> Sign up! </span>
+      </div>
+   </div>
+   <div class="form" v-else>
+     <div class="close-btn" @click="showForm=false">
+       <i class="el-icon-close"></i>
+     </div>
+      <h2>SIGN UP</h2>
+        <div>
+          <input type="text" placeholder="Username">
+      </div>
+      <div>
+        <input type="email" class="input_field" name="email" id="email" value="" placeholder="E-mail">
+      </div>
+      <div>
+          <input type="password" placeholder="Password">
+      </div>
+      <div>
+          <input type="password" placeholder="Re-type Password">
+      </div>
+      <div class="checkbox-box">
+        <input type="checkbox" id="old" value="1" required="" >
+        <label for="old" class="label_section">Yes, I’m over 18 years old.</label>
+      </div>
+      <div class="form-btn" style="float: left;margin-top: 0px">
+        <span>Sign Up</span>
+      </div>
+        <div class="form-ft">
+        <p style="margin-left: 0;">If you forgot your password </p>
+        <span> Click Here!</span>
       </div>
    </div>
  </div>
@@ -68,7 +97,8 @@ export default {
   name:"app",
   data() {
     return {
-      showForm:false
+      showForm:false,
+      isLogin:true,
     }
   },
 }
@@ -191,13 +221,27 @@ export default {
     background: rgba(32, 20, 51, 0.9);
     .form{
       width: 520px;
-      background: #3a2e4d;
+      background: #412966;
       position: absolute;
       padding: 54px 45px;
       box-sizing: border-box;
       top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    .checkbox-box{
+      display: flex;
+      align-items: center;
+      margin: 20px 0;
+      color: #685f77;
+      font-size: 16px;
+    input{
+        width: 20px;
+    height: 20px;
+    background: #342a45;
+    margin: 0;
+    margin-right: 10px;
+    }
+    }
       h2{
        color: #fff;
        font-size: 24px;
