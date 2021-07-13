@@ -89,7 +89,20 @@
       </div>
    </div>
  </div>
- 
+  <div class="footer">
+    <div><img src="./assets/images/logo.svg" alt="" srcset=""></div>
+    <p>Copyright © 2021, SexVid.xxx. All rights reserved. All models are 18+ y.o.</p>
+    <div>
+      <span>TERMS & CONDITIONS </span>
+      <span>18 U.S.C. 2257  </span>
+      <span>PRIVACY POLICY </span>
+      <span>DMCA </span>
+      <span>WEBMASTERS  </span>
+      <span>ADVERTISING   </span>
+      <span>CONTACT US  </span>
+      
+    </div>
+  </div>
   </div>
 </template>
 <script>
@@ -111,7 +124,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   background: #110525;
+  font-size: 16px;
  
+}
+.custom-pagination{
+  padding: 20px 0;
+  .el-pagination.is-background .btn-next, .el-pagination.is-background .btn-prev, .el-pagination.is-background .el-pager li{background-color: #291e3b;
+    color: #b2a2cb;}
+  .el-pagination.is-background .el-pager li:not(.disabled).active{
+    background: #7229cd;
+  }
 }
 .main{
    width: 1440px;
@@ -320,12 +342,17 @@ export default {
       }
     }
 }
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.footer{
+  padding: 40px 0;
+img{
+  width: 200px;
+  
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+p{margin: 30px 0; color: #595067;}
+span{
+  color: #888292;
+  margin: 0 14px;
+  &:hover{color: #fff;}
+}
 }
 </style>
