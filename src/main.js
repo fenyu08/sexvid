@@ -8,6 +8,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VideoPlayer from 'vue-video-player'
 import 'vue-video-player/src/custom-theme.css'
 import 'video.js/dist/video-js.css'
+import axios from 'axios'
+Vue.prototype.$http = axios
 Vue.use(ElementUI);
 Vue.use(VideoPlayer);
 Vue.config.productionTip = false

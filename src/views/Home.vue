@@ -20,6 +20,11 @@ export default {
     return{
       homeData1:9
     }
+  },
+  created(){
+    this.$http.post('api/api/v1/movie/get_movie_list/').then(res=>{
+      console.log(res)
+    })
   }
 }
 </script>
