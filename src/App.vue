@@ -8,24 +8,25 @@
       <li><span>ZBporn</span></li>
       <li><span>HDTube.Porn</span></li>
     </ul>
-    <ul class="right">
+    <!-- <ul class="right">
       <li class="language">
         <span>English</span>
       </li>
       <li @click="showForm=true,isLogin=true"><span>Log in</span></li>
       <li @click="showForm=true,isLogin=false"><span>Sign up</span> </li>
-    </ul>
+    </ul> -->
    </div>
    <div class="nav">
      <img src="./assets/images/logo.svg" alt="" srcset="" style="width:220px">
      <ul>
-       <li @click="$router.push('/')"><span>Home</span></li>
-       <li><span>Videos</span></li>
+       <li @click="menuIndex=0" :class="{active:menuIndex==0}"><span>Home</span></li>
+       <!-- <li><span>Videos</span></li>
        <li><span>Photos</span></li>
        <li><span>Categories</span></li>       
        <li><span>Channels</span></li>
        <li><span>Community</span></li>
-        <li><span>Live Sex</span></li>
+        <li><span>Live Sex</span></li> -->
+        <li v-for="(item,index) in menuList" :key="index" @click="menuIndex=item.id"  :class="{active:menuIndex==item.id}"><span>{{item.name}}</span></li>
      </ul>
    </div>
   </div>
@@ -106,14 +107,42 @@
   </div>
 </template>
 <script>
+
 export default {
   name:"app",
   data() {
     return {
       showForm:false,
       isLogin:true,
+      menuList:[],
+      menuIndex:0,
+      
     }
   },
+
+  created(){
+    this.getMenu()
+   
+  },
+  watch:{
+      menuIndex:function(e){
+        this.$store.commit('setItem',e)
+        if(this.$route.name!='Home'){
+           this.$router.push('/')
+        }
+       
+      }
+  },
+  methods:{
+    getMenu(){
+       this.$http.get('api/api/v1/movie/get_movie_sort/').then(res=>{
+      if(res.data.code==1){
+        this.menuList=res.data.data
+      }
+    })
+    },
+   
+  }
 }
 </script>
 <style lang="less">
@@ -138,6 +167,7 @@ export default {
 .main{
    width: 1440px;
   margin: 0 auto;
+  min-height: 543px;
 }
 .header{
   background: linear-gradient(to bottom, #000 0%, #240c44 100%);
@@ -196,6 +226,9 @@ export default {
         &:hover{
           color: #fff;
         
+        }
+        &.active{
+          color: #fff;
         }
       }
     }

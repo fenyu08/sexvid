@@ -23,9 +23,9 @@
             </div>
         </div>
         <div class="video-info">
-            <p>Added: <span>4 years ago</span> </p>
-            <p>Duration: <span>6:14</span></p>
-            <p>Viewed: <span>442741444</span></p>
+            <p>Added: <span>{{movieInfo.shelftime|formatDate2}}</span> </p>
+            <p>Duration: <span>{{movieInfo.play_time|toHourMinute}}</span></p>
+            <p>Viewed: <span>{{movieInfo.reads}}</span></p>
         </div>
         <div class="video-tabs">
             <div @click="tagIndex=0" :class="{active:tagIndex==0}"><span>info</span></div>
@@ -41,11 +41,11 @@
         <div class="tabs-content">
             <div class="info" v-if="tagIndex==0">
                 <div  style="padding-right: 72px;">
-                <p class="title">A CURVY WOMAN IN LINGERIE GETS A DICK INSIDE HER WET PUSSY LIPS</p>
+                <p class="title">{{movieInfo.title}}</p>
                 <p style="margin: 0 0 10px;color: #a09ba8;">A woman with large tits spreads her pussy lips wide open and moves her hot lingerie upwards to make way free for a hard penetration. her young stud is getting hard from her work and he sticks his dick inside her tight cunt.</p>
                 <p style="margin: 0 0 20px 0;"> Categories: <i>Anal</i> <i>Hardcore</i> <i>HD Videos</i> </p>
-                <p style="margin: 0 0 20px 0;">Channel: <i>Anal Angels</i> </p>
-                <p style="margin-bottom:0">Tags: <span>chick</span> <span>ravishing</span> <span>young</span><span>chick</span> <span>ravishing</span></p>
+                <p style="margin: 0 0 20px 0;">Channel: <i>{{movieInfo.author}}</i> </p>
+                <p style="margin-bottom:0">Tags: <span>{{movieInfo.tag}}</span></p>
                 </div>
                 <div>
                     <img src="../assets/images/2.jpg" alt="">
@@ -58,7 +58,7 @@
                     <p>You need to <span style="font-weight: 700;color: #9440ff;cursor: pointer;" >Login</span> or <span style="font-weight: 700;color: #9440ff;cursor: pointer;" > Register </span>  to post comments</p>
                     <!-- <input type="text" readonly='false'> -->
                 </div>
-                <div class="block-comments">
+                <div class="block-comments" >
                     <img src="../assets/images/not_avatar_com.jpg" alt="" srcset="">
                     <div class="post-wrapper">
                         <div style="display: flex;">
@@ -97,7 +97,7 @@
             
        </div>
        </div>
-       <div class="recommend-box">
+       <!-- <div class="recommend-box" style="display: none;">
            <div class="title">
             <span :class="{active:tagIndex2==0}" @click="tagIndex2=0">Related Videos</span>
             <span :class="{active:tagIndex2==1}" @click="tagIndex2=1">21 Naturals</span>
@@ -110,11 +110,11 @@
                 :total="1000">
                 </el-pagination>
            </div>
-       </div>
+       </div> -->
     </div>
 </template>
 <script>
-import videoList from '@/components/videoList.vue'
+// import videoList from '@/components/videoList.vue'
 export default {
     name:'videoPlay',
     data() {
@@ -139,9 +139,9 @@ export default {
                     fluid: true,
                     sources: [{
                         //类型
-                        type: "video/mp4",
+                         type: "application/x-mpegURL",
                         //url地址
-                        src: 'https://www.sexvid.xxx/get_file/8/8e2fc646acbc001460da507562ac3867dd666a39ec/19000/19604/19604_480p.mp4/?br=844&rnd=1625834750384' 
+                        src: 'https://www.lgypjk.com/vod/20200819/hot_071313_381/playlist.m3u8' 
                     }],
                     //你的封面地址
                     poster: '', 
@@ -154,12 +154,18 @@ export default {
                         //全屏按钮
                         fullscreenToggle: true  
                     }
-                }
+                },
+                movieInfo:'',
+
         }
     },
-components: {
-    videoList
-  },
+// components: {
+//     videoList
+//   },
+  created(){
+   this.movieInfo= JSON.parse(localStorage.getItem('movieInfo'))
+   this.playerOptions.sources[0].src=this.movieInfo.play_url
+  }
 
 }
 </script>

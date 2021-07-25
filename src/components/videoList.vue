@@ -1,14 +1,14 @@
 <template>
     <div class="video-list">
         <ul>
-            <li v-for="index in videoData" :key="index" @click="toPlay">
-                <img src="../assets/images/10.jpg" alt="" srcset="" style="width:100%">
+            <li v-for="(item,index) in videoData" :key="index" @click="toPlay(item)">
+                <img :src="item.cover" alt="" srcset="" style="width:100%">
                 <div class="video-info">
-                    <p>A curvy woman in lingerie gets a dick inside her wet pussy lips</p>
+                    <p>{{item.title}}</p>
                     <div class="tools-holder">
-                        <span style="color:#fff">7 years ago</span>
-                        <span style="color:#a89aff;margin-left: auto;"> <i class="el-icon-view"></i> 322.5M</span>
-                        <span style="color:#ff99fb;margin-left: 16px;"><i class="el-icon-time"></i> 8:10</span>
+                        <span style="color:#fff">{{item.shelftime|formatDate2}}</span>
+                        <span style="color:#a89aff;margin-left: auto;"> <i class="el-icon-view"></i> {{item.reads}}</span>
+                        <span style="color:#ff99fb;margin-left: 16px;"><i class="el-icon-time"></i> {{item.play_time|toHourMinute}}</span>
                     </div>
                 </div>
                 <div class="play-btn">
@@ -28,10 +28,14 @@ export default {
         }
     },
     props: {
-    videoData: Number
+    videoData: Array
+  },
+  filters:{
+     
   },
   methods:{
-      toPlay(){
+      toPlay(i){
+          localStorage.setItem('movieInfo',JSON.stringify(i));
           this.$router.push('/videoPlay')
       }
   }
